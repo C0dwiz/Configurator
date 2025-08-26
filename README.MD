@@ -18,26 +18,64 @@
 
 ### 📦 Installation
 
-To get started, simply add `Configurator` to your project's `build-depends` in your `.cabal` file.
+To get started, you can add `Configurator` to your project's dependencies. The easiest way is to use a modern build tool like **Cabal** or **Stack**.
 
-```cabal
-library
-  ...
-  build-depends:
-      base >= 4.7 && < 5
-    , Configurator >= 0.1.0.0
-    , aeson
-    , yaml
-    , text
-    , containers
-    , template-haskell
-    , directory
-    ...
-```
+#### **Using Cabal (Recommended)**
 
-Then, run `cabal build` to install the dependencies.
+If you're using Cabal, you can add the Git repository to a `cabal.project` file in the root of your project.
 
------
+1.  **Create a `cabal.project` file** if it doesn't exist, and add the following lines:
+
+    ```
+    packages: .
+    ```
+
+2.  **Add the `Configurator` Git repository** to your `cabal.project` file, specifying a `tag` or `commit` for stability.
+
+    ```
+    source-repository-package
+        type: git
+        location: https://github.com/C0dwiz/Configurator.git
+        tag: v0.1.0.0
+    ```
+
+3.  **Add `Configurator` to your `build-depends`** in your project's main `.cabal` file.
+
+    ```cabal
+    library
+      ...
+      build-depends:
+          base >= 4.7 && < 5
+        , Configurator
+        ...
+    ```
+
+4.  **Run `cabal build`** to automatically download the library and its dependencies from the Git repository.
+
+#### **Using Stack**
+
+If you prefer Stack, add the Git repository to your `stack.yaml` file under the `extra-deps` section.
+
+1.  **Add the repository to `stack.yaml`**, specifying a `commit` for a stable build.
+
+    ```yaml
+    extra-deps:
+    - git: https://github.com/C0dwiz/Configurator.git
+      commit: <hash-commit>
+    ```
+
+2.  **Add `Configurator` to your `build-depends`** in your project's `.cabal` file, just as you would for any other dependency.
+
+    ```cabal
+    library
+      ...
+      build-depends:
+          base
+        , Configurator
+        ...
+    ```
+
+3.  **Run `stack build`** to fetch and build the library directly from the Git repository.
 
 ### 🚀 Getting Started
 
