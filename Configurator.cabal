@@ -3,8 +3,8 @@ name:               Configurator
 version:            0.1.0.0
 synopsis:           A type-safe configuration parser.
 description:        Type-safe configuration parser (YAML/JSON/ENV) with automatic documentation generation.
-homepage:           https://github.com/C0dwizigurator
-bug-reports:        https://github.com/C0dwizigurator/issues
+homepage:           https://github.com/C0dwiz/Configurator
+bug-reports:        https://github.com/C0dwiz/Configurator/issues
 license:            MIT
 license-file:       LICENSE
 author:             C0dwiz
