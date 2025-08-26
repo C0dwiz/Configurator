@@ -1,0 +1,11 @@
+database:
+  host: "localhost"
+  port: 5432
+  user: "admin"
+  password: "supersecretpassword"
+
+log_level: "DEBUG"
+
+metrics:
+  enabled: true
+  interval_seconds: 30
