@@ -1,0 +1,15 @@
+{
+  "SPDX-License-Identifier": "MIT",
+  "Copyright": "2026 CodWiz",
+  "database": {
+    "host": "db.example.com",
+    "port": 5432,
+    "user": "admin",
+    "password": "supersecretpassword"
+  },
+  "log_level": "DEBUG",
+  "metrics": {
+    "enabled": true,
+    "interval_seconds": 30
+  }
+}

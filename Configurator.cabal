@@ -1,8 +1,8 @@
 cabal-version:      2.4
 name:               Configurator
-version:            0.1.0.0
+version:            0.2.0.0
 synopsis:           A type-safe configuration parser.
-description:        Type-safe configuration parser (YAML/JSON/ENV) with automatic documentation generation.
+description:        Type-safe configuration parser (YAML/JSON) with compile-time validation, runtime validation constraints, and debugging support.
 homepage:           https://github.com/C0dwiz/Configurator
 bug-reports:        https://github.com/C0dwiz/Configurator/issues
 license:            MIT
@@ -14,10 +14,12 @@ category:           Configuration
 extra-source-files: CHANGELOG.md
 
 library
-    exposed-modules:  Configurator
-    other-modules:
+    exposed-modules:
+        Configurator,
         Configurator.Internal,
-        Configurator.TH
+        Configurator.TH,
+        Configurator.Validator
+    hs-source-dirs:   src
     build-depends:
         base >= 4.7 && < 5,
         aeson,
@@ -27,8 +29,11 @@ library
         containers,
         unordered-containers,
         template-haskell,
-        directory
-    hs-source-dirs:   src
+        directory,
+        filepath,
+        regex-tdfa,
+        vector,
+        scientific
     default-language: Haskell2010
 
 executable example-usage
@@ -38,7 +43,26 @@ executable example-usage
         Configurator,
         text,
         containers,
-        aeson
+        aeson,
+        vector,
+        scientific
     hs-source-dirs:   app
     default-language: Haskell2010
     ghc-options:      -Wall
+
+test-suite configurator-tests
+    type:             exitcode-stdio-1.0
+    main-is:          Main.hs
+    hs-source-dirs:   test
+    build-depends:
+        base >= 4.7 && < 5,
+        HUnit,
+        Configurator,
+        aeson,
+        text,
+        containers,
+        unordered-containers,
+        vector,
+        scientific
+    default-language: Haskell2010
+    ghc-options:      -Wall -threaded -rtsopts -with-rtsopts=-N
