@@ -1,11 +1,21 @@
+# SPDX-License-Identifier: MIT
+# Copyright (C) 2026 CodWiz
+
 database:
   host: "localhost"
   port: 5432
   user: "admin"
   password: "supersecretpassword"
+  servers:
+    - "db1.example.com"
+    - "db2.example.com"
+    - "db3.example.com"
 
 log_level: "DEBUG"
 
 metrics:
   enabled: true
   interval_seconds: 30
+  endpoints:
+    - "http://metrics.example.com:8080"
+    - "http://backup.example.com:8080"
